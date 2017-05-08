@@ -37,6 +37,8 @@ public class Test : MonoBehaviour
 
         var start = Time.realtimeSinceStartup; 
         int[,] tab = fillArray(10);
+
+        // rectangle arrayってのがあったんだな、今までまったく使ってこなかったんだが。特に嬉しいことは、四角い画像とかか。まあうーん。
     }
 
     [DllImport ("LowLevelPlugin")] private static extern int [,] fillArray(int size);
