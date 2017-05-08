@@ -10,8 +10,8 @@ public class Smaple {
 
         Profiler.enableBinaryLog = true;
         
-        Profiler.enabled = true;
+        Profiler.enabled = !Profiler.enabled;
 
-        Debug.LogError("here!");
+        Debug.LogError("here! Profiler.enabled:" + Profiler.enabled);// ここがfalseになると動くんだけど。なんで？
     }
 }

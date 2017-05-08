@@ -86,3 +86,9 @@ $RECYCLE.BIN/
 Assets/VSCode/*
 
 Assets/VSCode.meta
+
+profiler.log.data
+
+profiler.log
+
+debug.log
