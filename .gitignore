@@ -92,3 +92,7 @@ profiler.log.data
 profiler.log
 
 debug.log
+
+prof/*
+
+control.log
