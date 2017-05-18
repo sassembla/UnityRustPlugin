@@ -9,7 +9,7 @@ public class Smaple {
 
     private const string controlPath = "control.log";
     private const string profilePath = "prof/prof_";
-    private const int filePerFrameLimit = 2;
+    private const int filePerFrameLimit = 1;
     
     private static bool running;
 
