@@ -13,8 +13,8 @@ public class Smaple {
     
     private static bool running;
 
-    [MenuItem("Window/prof")] public static void Read () {
-        var dataFileProfilerName = "prof/prof_0002";
+    [MenuItem("Window/readfile")] public static void Read () {
+        var dataFileProfilerName = "prof/prof_0001";
         var dataFileName = dataFileProfilerName + ".data";
         
         var header = new byte[16];
@@ -25,26 +25,22 @@ public class Smaple {
                 fs.Read(header, 0, header.Length);
 
                 int size = GetIntValue(header, 8); // オフセットの前のとこは最初は固定値なんだけど、なんか情報を含んでそう。
-                Debug.LogError("size:" + size);
+                Debug.LogError("データのsize:" + size + " こんだけのサイズのデータがあるはず。");
+
                 
-                // 1フレームのデータサイズがこれ。
+                // 1フレームのデータがこれ。
                 var buffer = new byte[size];
-                var rest = fs.Read(buffer, 0, size);
+                fs.Read(buffer, 0, size);
 
-                // このデータに何がどうやって入っているのかを追うことができれば、幸せになれそうなんですが。
-                // たぶん同じようなフォーマットだと思うんだよね。
-                
-                Debug.LogError("a:" + Encoding.Default.GetString(buffer));
-                fs.Read(header, 0, header.Length);
-                // int size2 = GetIntValue(header, 8);
-                // Debug.LogError("size2:" + size2);
-
-                break;
-
-                if (0 < rest) {
-                    continue;
+                // ということで、あとは中身をアレする。
+                using (var sw = File.OpenWrite("exp")) {
+                    sw.Write(buffer, 0, buffer.Length);
                 }
-                break;
+
+
+                if (fs.Position == fs.Length) {// read to end.
+                    break;
+                }
             }
         }
 
