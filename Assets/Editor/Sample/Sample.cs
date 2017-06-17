@@ -49,6 +49,9 @@ Cleanup Unused Cached DataGameView.GetMainGameViewTargetSize()	ProcessRemoteInpu
         }
     }
 
+    private void Some () {
+        Profiler.AddFramesFromFile("");
+    }
     
     [MenuItem("Window/readfile")] public static void Read () {
         var dataFileProfilerName = "prof/prof_0001";
@@ -83,6 +86,8 @@ Cleanup Unused Cached DataGameView.GetMainGameViewTargetSize()	ProcessRemoteInpu
 
         Profiler.AddFramesFromFile(dataFileProfilerName);
     }
+
+
     private static int GetIntValue(byte[] bin, int offset) {
         return (bin[offset + 0] << 0) +
             (bin[offset + 1] << 8) +
@@ -90,7 +95,9 @@ Cleanup Unused Cached DataGameView.GetMainGameViewTargetSize()	ProcessRemoteInpu
             (bin[offset + 3] << 24);
     }
 
-
+    /**
+        プロファイルオン/オフの切り替え
+     */
     [MenuItem("Window/test")] public static void Run () {
         var dest = Path.Combine(Application.persistentDataPath, profilePath);
         
